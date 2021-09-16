@@ -73,7 +73,7 @@ public class KeyChain {
         maxIndex = primes.length - 1;  // Since index of last element of array is its length-1.
         minIndex = maxIndex / ratioMaxIndexMinIndex;
         indexP = random.nextInt(maxIndex - minIndex + 1) + minIndex;  // Generates random integer between minIndex and maxIndex (inclusively).
-        indexQ = indexP;
+        indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
         while (indexP == indexQ) {
             indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
         }
