@@ -74,7 +74,7 @@ public class KeyChain {
         minIndex = maxIndex / ratioMaxIndexMinIndex;
         indexP = random.nextInt(maxIndex - minIndex + 1) + minIndex;  // Generates random integer between minIndex and maxIndex (inclusively).
         indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
-        while (indexP == indexQ) {
+        while (indexP == indexQ) {  // To make sure p != q.
             indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
         }
         BigInteger p = BigInteger.valueOf(primes[indexP]);
