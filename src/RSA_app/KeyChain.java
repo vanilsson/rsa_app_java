@@ -67,16 +67,16 @@ public class KeyChain {
     public void generateKeys() {
         int indexP, indexQ, minIndex, maxIndex, limitPrime, ratioMaxIndexMinIndex;
         Random random = new Random();
+        
         ratioMaxIndexMinIndex = 10;  // Ratio between maxIndex and minIndex.
         limitPrime = 10000;
         int [] primes = generatePrimes(limitPrime);  // Returns array of primes up to limitPrime.
         maxIndex = primes.length - 1;  // Since index of last element of array is its length-1.
         minIndex = maxIndex / ratioMaxIndexMinIndex;
         indexP = random.nextInt(maxIndex - minIndex + 1) + minIndex;  // Generates random integer between minIndex and maxIndex (inclusively).
-        indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
-        while (indexP == indexQ) {  // To make sure p != q.
+        do {
             indexQ = random.nextInt(maxIndex - minIndex + 1) + minIndex;
-        }
+        } while(indexP == indexQ);  // To assure that p != q.
         BigInteger p = BigInteger.valueOf(primes[indexP]);
         BigInteger q = BigInteger.valueOf(primes[indexQ]);
         n = p.multiply(q);
